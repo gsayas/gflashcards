@@ -6,7 +6,7 @@ export default class ListDecks extends React.Component {
         return (
             <View style={styles.container}>
                 <FlatList
-                    data={objToArray(decks2)}
+                    data={objToArray(decks)}
                     renderItem={({item}) => <Text>{item.title}</Text>}
                 />
             </View>
@@ -24,15 +24,12 @@ const styles = StyleSheet.create({
 });
 
 const objToArray = (obj) => {
-    Object.keys(obj).map((key) => {
-        obj[key]
-    })
+    return Object.keys(obj).map((key) => obj[key]);
 }
 
-const decks = [{key: 'a'}, {key: 'b'}];
-
-const decks2 = {
+const decks = {
     React: {
+        key: 'React',
         title: 'React',
         questions: [
             {
@@ -46,6 +43,7 @@ const decks2 = {
         ]
     },
     JavaScript: {
+        key: 'JavasScript',
         title: 'JavaScript',
         questions: [
             {
