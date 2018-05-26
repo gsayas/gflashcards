@@ -5,7 +5,7 @@ export default class AddDeck extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Adding a new Decks</Text>
+                <Text>Adding a new Deck</Text>
             </View>
         );
     }
