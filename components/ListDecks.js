@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
+import DeckListItem from "./DeckListItem";
 
 export default class ListDecks extends React.Component {
     render() {
@@ -7,7 +8,7 @@ export default class ListDecks extends React.Component {
             <View style={styles.container}>
                 <FlatList
                     data={objToArray(decks)}
-                    renderItem={({item}) => <Text>{item.title}</Text>}
+                    renderItem={({item}) => <DeckListItem deck={item}/>}
                 />
             </View>
         );
