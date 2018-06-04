@@ -1,0 +1,1 @@
+//export const CAST_VOTE_ON_COMMENT = 'CAST_VOTE_ON_COMMENT';
