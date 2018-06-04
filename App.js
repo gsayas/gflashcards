@@ -4,6 +4,9 @@ import { createMaterialTopTabNavigator } from 'react-navigation'
 import { purple, white } from './utils/colors'
 import AddDeck from "./components/AddDeck";
 import ListDecks from "./components/ListDecks";
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './reducers';
 
 const Tabs = createMaterialTopTabNavigator({
     ListDecks: {
@@ -43,9 +46,11 @@ const Tabs = createMaterialTopTabNavigator({
 export default class App extends React.Component {
   render() {
     return (
-        <View style={{flex: 1}}>
-            <Tabs />
-        </View>
+        <Provider store={createStore(reducer)}>
+            <View style={{flex: 1}}>
+                <Tabs />
+            </View>
+        </Provider>
     );
   }
 }
