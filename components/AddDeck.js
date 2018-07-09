@@ -5,8 +5,9 @@ import {StyleSheet,
         KeyboardAvoidingView } from 'react-native';
 import {TouchableOpacity} from 'react-native';
 //import SubmitButton from 'SubmitButton'
-import { addDeck } from '../utils/api'
+import { addDeck, getDecks } from '../utils/api'
 import {purple, white} from "../utils/colors";
+import {AsyncStorage} from 'react-native';
 
 function SubmitButton ({ onPress }) {
     return (
@@ -33,6 +34,23 @@ export default class AddDeck extends React.Component {
         addDeck(title);
 
     }
+    handleGet = () => {
+
+        console.log('handleGet');
+        const decks = async () => {
+            try {
+                console.log('async');
+                const value = await AsyncStorage.getItem('gflashcards:decks');
+                    // We have data!!
+                    console.log(value);
+
+            } catch (error) {
+                console.log('error gio!!!')
+            }
+        }
+
+    }
+
     render() {
         const {title} = this.state;
 
@@ -46,6 +64,7 @@ export default class AddDeck extends React.Component {
                     style={styles.title}
                 />
                 <SubmitButton onPress={this.handleSubmit} />
+                <SubmitButton onPress={this.handleGet} />
             </KeyboardAvoidingView>
         );
     }

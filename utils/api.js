@@ -1,16 +1,24 @@
 import { AsyncStorage } from 'react-native';
 
-const STORAGE_KEY = 'gflashcards:decks'
+const STORAGE_KEY = 'gflashcards:decks';
 
-/*export function getDecks () {
+export function getDecks () {
     return AsyncStorage.getItem(STORAGE_KEY)
-        .then()
-}*/
+        .then((results) => {console.log(JSON.parse(results))})
+}
 
 export function addDeck ({ deckTitle }) {
-    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({
+    /*AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({
         decks: deckTitle
-    }))
+    }));*/
+
+    _storeData = async () => {
+        try {
+            await AsyncStorage.setItem(STORAGE_KEY, 'I like to save it. ');
+        } catch (error) {
+            // Error saving data
+        }
+    }
 }
 
 /*export function removeEntry (key) {
