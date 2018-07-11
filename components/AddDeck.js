@@ -7,7 +7,6 @@ import {TouchableOpacity} from 'react-native';
 //import SubmitButton from 'SubmitButton'
 import { addDeck, getDecks } from '../utils/api'
 import {purple, white} from "../utils/colors";
-import {AsyncStorage} from 'react-native';
 
 function SubmitButton ({ onPress }) {
     return (
@@ -21,33 +20,26 @@ function SubmitButton ({ onPress }) {
 
 export default class AddDeck extends React.Component {
     state = {
-        title: ''
+        title: 'hola',
+        thingy: 9
     }
     handleTitleChange = (title) => {
         this.setState(() => ({title}));
     }
     handleSubmit = () => {
-        const {title} = this.state;
+        const entry = 'jijijij';
+        const key = 'decks';
 
         //dispatch addDeck
-        console.log(title);
-        addDeck(title);
+        console.log(entry);
+        addDeck(key, entry);
 
     }
     handleGet = () => {
 
         console.log('handleGet');
-        const decks = async () => {
-            try {
-                console.log('async');
-                const value = await AsyncStorage.getItem('gflashcards:decks');
-                    // We have data!!
-                    console.log(value);
-
-            } catch (error) {
-                console.log('error gio!!!')
-            }
-        }
+        const decks = getDecks();
+        decks.then(res => console.log(res));
 
     }
 

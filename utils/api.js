@@ -4,22 +4,40 @@ const STORAGE_KEY = 'gflashcards:decks';
 
 export function getDecks () {
     return AsyncStorage.getItem(STORAGE_KEY)
-        .then((results) => {console.log(JSON.parse(results))})
+        .then(getResults)
 }
 
-export function addDeck ({ deckTitle }) {
-    /*AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({
-        decks: deckTitle
-    }));*/
+export function addDeck ( key, deck ) {
+    return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
+        [key]: deck
+    }));
+}
 
-    _storeData = async () => {
-        try {
-            await AsyncStorage.setItem(STORAGE_KEY, 'I like to save it. ');
-        } catch (error) {
-            // Error saving data
-        }
+export function getResults(results){
+    console.log(results)
+    return results === null ? 'mierda' : JSON.parse(results);
+}
+/*
+export async function addDeck ({ key, deck }) {
+    try {
+        await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({
+            [key]: 'hi there'
+        }));
+    } catch (error) {
+        // Error saving data
+        console.log(error);
     }
 }
+
+export async function getDecks () {
+    try {
+        const value = await AsyncStorage.getItem(STORAGE_KEY);
+        console.log(value); // hi there
+    } catch (error) {
+        console.log(error);
+    }
+}*/
+
 
 /*export function removeEntry (key) {
     return AsyncStorage.getItem(STORAGE_KEY)
