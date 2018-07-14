@@ -4,9 +4,10 @@ const initialDecksState = {
     decks: []
 };
 
-export function decksReducer(state = initialDecksState, action) {
+function decksReducer(state = initialDecksState, action) {
     switch  (action.type) {
         case Actions.LOAD_DECKS:
+            console.log(action.decks)
             return {
                 ...state,
                 decks: action.decks
@@ -23,3 +24,5 @@ export function decksReducer(state = initialDecksState, action) {
             return state;
     }
 }
+
+export default decksReducer;

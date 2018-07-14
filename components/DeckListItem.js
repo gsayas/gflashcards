@@ -12,7 +12,7 @@ export default class DeckListItem extends React.Component {
         return (
             <TouchableOpacity style={styles.item} onPress={() => console.log('Pressed!')} >
                 <Text>{this.props.deck.title}</Text>
-                <Text>{this.cardToString(this.props.deck.questions)}</Text>
+                <Text>{/*this.cardToString(this.props.deck.questions)*/}</Text>
             </TouchableOpacity>
         );
     }

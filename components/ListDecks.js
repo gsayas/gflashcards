@@ -9,9 +9,14 @@ class ListDecks extends React.Component {
 
     componentDidMount () {
         const { dispatch } = this.props
+        console.log('mounting')
 
-        getDecks()
-            .then((persistedDecks) => dispatch(loadDecks(persistedDecks)))
+        const decks = getDecks();
+        //decks.then(res => console.log(res));
+        decks.then(res => dispatch(loadDecks(res)))
+
+       /* getDecks()
+            .then((persistedDecks) => dispatch(loadDecks(persistedDecks)));
             /*.then(({ entries }) => {
                 if (!entries[timeToString()]) {
                     dispatch(addEntry({
@@ -23,6 +28,9 @@ class ListDecks extends React.Component {
     }
 
     render() {
+        const {decks} = this.props;
+        console.log(this.props);
+
         return (
             <View style={styles.container}>
                 <FlatList
@@ -75,9 +83,9 @@ const decks = {
 }
 
 
-function mapStateToProps (decks) {
+function mapStateToProps (decksReducer) {
     return {
-        decks
+        decks: decksReducer.decks
     }
 }
 export default connect(
