@@ -9,13 +9,13 @@ export function getDecks () {
 
 export function addDeck ( key, deck ) {
     return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
-        [key]: deck
+        [deck.title]: deck
     }));
 }
 
 export function getResults(results){
     console.log(results)
-    return results === null ? 'mierda' : JSON.parse(results);
+    return JSON.parse(results);
 }
 /*
 export async function addDeck ({ key, deck }) {

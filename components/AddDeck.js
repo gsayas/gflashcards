@@ -20,14 +20,13 @@ function SubmitButton ({ onPress }) {
 
 export default class AddDeck extends React.Component {
     state = {
-        title: 'hola',
-        thingy: 9
+        title: '',
     }
     handleTitleChange = (title) => {
         this.setState(() => ({title}));
     }
     handleSubmit = () => {
-        const entry = 'jijijij';
+        const entry = this.state;
         const key = 'decks';
 
         //dispatch addDeck
