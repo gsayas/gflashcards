@@ -1,8 +1,27 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import DeckListItem from "./DeckListItem";
+import { connect } from 'react-redux'
+import { getDecks } from '../utils/api'
+import {loadDecks} from "../actions/decksActions";
 
-export default class ListDecks extends React.Component {
+class ListDecks extends React.Component {
+
+    componentDidMount () {
+        const { dispatch } = this.props
+
+        getDecks()
+            .then((persistedDecks) => dispatch(loadDecks(persistedDecks)))
+            /*.then(({ entries }) => {
+                if (!entries[timeToString()]) {
+                    dispatch(addEntry({
+                        [timeToString()]: getDailyReminderValue()
+                    }))
+                }
+            })
+            .then(() => this.setState(() => ({ready: true})))*/
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -54,3 +73,13 @@ const decks = {
         ]
     }
 }
+
+
+function mapStateToProps (decks) {
+    return {
+        decks
+    }
+}
+export default connect(
+    mapStateToProps,
+)(ListDecks)
