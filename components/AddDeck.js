@@ -5,8 +5,10 @@ import {StyleSheet,
         KeyboardAvoidingView } from 'react-native';
 import {TouchableOpacity} from 'react-native';
 //import SubmitButton from 'SubmitButton'
-import { addDeck, getDecks } from '../utils/api'
+import { insertDeck, getDecks } from '../utils/api'
 import {purple, white} from "../utils/colors";
+import {addDeck} from "../actions/decksActions";
+import { connect } from 'react-redux'
 
 function SubmitButton ({ onPress }) {
     return (
@@ -18,7 +20,7 @@ function SubmitButton ({ onPress }) {
     )
 }
 
-export default class AddDeck extends React.Component {
+class AddDeck extends React.Component {
     state = {
         title: '',
     }
@@ -26,12 +28,13 @@ export default class AddDeck extends React.Component {
         this.setState(() => ({title}));
     }
     handleSubmit = () => {
-        const entry = this.state;
-        const key = 'decks';
+        const entry = {title: this.state.title};
+        //const key = 'decks';
 
-        //dispatch addDeck
+        this.props.dispatch(addDeck(entry));
+
         console.log(entry);
-        addDeck(key, entry);
+        insertDeck(entry);
 
     }
     handleGet = () => {
@@ -60,6 +63,8 @@ export default class AddDeck extends React.Component {
         );
     }
 }
+
+export default connect()(AddDeck)
 
 const styles = StyleSheet.create({
     container: {

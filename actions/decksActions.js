@@ -1,7 +1,7 @@
 //import * as API from '../utils/api';
 import { ADD_DECK, LOAD_DECKS } from '../actions/types.js';
 
-export function addDeck ({deck}) {
+export function addDeck (deck) {
     return {
         type: ADD_DECK,
         deck

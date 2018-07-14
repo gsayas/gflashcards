@@ -11,11 +11,7 @@ class ListDecks extends React.Component {
         const { dispatch } = this.props
         console.log('mounting')
 
-        const decks = getDecks();
-        //decks.then(res => console.log(res));
-        decks.then(res => dispatch(loadDecks(res)))
-
-       /* getDecks()
+        getDecks()
             .then((persistedDecks) => dispatch(loadDecks(persistedDecks)));
             /*.then(({ entries }) => {
                 if (!entries[timeToString()]) {
@@ -24,7 +20,7 @@ class ListDecks extends React.Component {
                     }))
                 }
             })
-            .then(() => this.setState(() => ({ready: true})))*/
+            .then(() => this.setState(() => ({ready: true}))) */
     }
 
     render() {
@@ -55,37 +51,9 @@ const objToArray = (obj) => {
     return Object.keys(obj).map((key) => obj[key]);
 }
 
-const decks = {
-    React: {
-        key: 'React',
-        title: 'React',
-        questions: [
-            {
-                question: 'What is React?',
-                answer: 'A library for managing user interfaces'
-            },
-            {
-                question: 'Where do you make Ajax requests in React?',
-                answer: 'The componentDidMount lifecycle event'
-            }
-        ]
-    },
-    JavaScript: {
-        key: 'JavasScript',
-        title: 'JavaScript',
-        questions: [
-            {
-                question: 'What is a closure?',
-                answer: 'The combination of a function and the lexical environment within which that function was declared.'
-            }
-        ]
-    }
-}
-
-
-function mapStateToProps (decksReducer) {
+function mapStateToProps (decks) {
     return {
-        decks: decksReducer.decks
+        decks
     }
 }
 export default connect(
