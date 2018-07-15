@@ -1,6 +1,6 @@
 import * as Actions from "../actions/types.js";
 
-const initialDecks = {
+/*const initialDecks = {
     decks: {
         React: {
             key: 'React',
@@ -27,7 +27,8 @@ const initialDecks = {
             ]
         }
     }
-};
+};*/
+const initialDecks = {};
 
 function decks(state = initialDecks, action) {
     switch  (action.type) {

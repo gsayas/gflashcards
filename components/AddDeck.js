@@ -30,7 +30,7 @@ class AddDeck extends React.Component {
     handleSubmit = () => {
         const newDeck = {
             title: this.state.title,
-            questions: {}
+            questions: []
         };
 
         this.props.dispatch(addDeck(newDeck));

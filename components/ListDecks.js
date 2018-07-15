@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
-import DeckListItem from "./DeckListItem";
+import DeckListItem from './DeckListItem';
 import { connect } from 'react-redux'
 import { getDecks } from '../utils/api'
-import { loadDecks } from "../actions/decksActions";
+import { loadDecks } from '../actions/decksActions';
 
 class ListDecks extends React.Component {
 
@@ -29,10 +29,12 @@ class ListDecks extends React.Component {
 
         return (
             <View style={styles.container}>
+                {Object.keys(decks).length?
                 <FlatList
                     data={objToArray(decks)}
                     renderItem={({item}) => <DeckListItem deck={item}/>}
-                />
+                />:
+                <Text>Start Adding Decks!</Text>}
             </View>
         );
     }

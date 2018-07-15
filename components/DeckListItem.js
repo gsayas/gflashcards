@@ -4,7 +4,7 @@ import { white } from '../utils/colors.js'
 
 export default class DeckListItem extends React.Component {
 
-    cardToString = (questions) => {
+    questionsToString = (questions) => {
         return questions.length + (questions.length !== 1 ? ' Cards':' Card');
     }
 
@@ -12,7 +12,7 @@ export default class DeckListItem extends React.Component {
         return (
             <TouchableOpacity style={styles.item} onPress={() => console.log('Pressed!')} >
                 <Text>{this.props.deck.title}</Text>
-                <Text>{/*this.cardToString(this.props.deck.questions)*/}</Text>
+                <Text>{this.questionsToString(this.props.deck.questions)}</Text>
             </TouchableOpacity>
         );
     }
