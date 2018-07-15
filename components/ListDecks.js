@@ -20,7 +20,7 @@ class ListDecks extends React.Component {
                     }))
                 }
             })
-            .then(() => this.setState(() => ({ready: true}))) */
+            .then(() => this.setState(() => ({ready: true})))  */
     }
 
     render() {
@@ -32,7 +32,7 @@ class ListDecks extends React.Component {
                 {Object.keys(decks).length?
                 <FlatList
                     data={objToArray(decks)}
-                    renderItem={({item}) => <DeckListItem deck={item}/>}
+                    renderItem={({item}) => <DeckListItem deck={item} navigation={this.props.navigation} />}
                 />:
                 <Text>Start Adding Decks!</Text>}
             </View>

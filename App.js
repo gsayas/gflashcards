@@ -1,12 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
-import { createMaterialTopTabNavigator } from 'react-navigation'
+import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation'
 import { purple, white } from './utils/colors'
 import AddDeck from "./components/AddDeck";
 import ListDecks from "./components/ListDecks";
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import decksReducer from './reducers/decksReducer';
+import DeckDetail from "./components/DeckDetail";
 
 const Tabs = createMaterialTopTabNavigator({
     ListDecks: {
@@ -43,12 +44,30 @@ const Tabs = createMaterialTopTabNavigator({
     }
 })
 
+const DeckNavigator = createStackNavigator({
+    Home: {
+        screen: Tabs,
+        navigationOptions: {
+            header: null
+        }
+    },
+    DeckDetail: {
+        screen: DeckDetail,
+        navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: purple,
+            }
+        }
+    }
+})
+
 export default class App extends React.Component {
   render() {
     return (
         <Provider store={createStore(decksReducer)}>
             <View style={{flex: 1}}>
-                <Tabs />
+                <DeckNavigator />
             </View>
         </Provider>
     );

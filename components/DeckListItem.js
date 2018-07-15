@@ -10,7 +10,7 @@ export default class DeckListItem extends React.Component {
 
     render() {
         return (
-            <TouchableOpacity style={styles.item} onPress={() => console.log('Pressed!')} >
+            <TouchableOpacity style={styles.item} onPress={() => this.props.navigation.navigate('DeckDetail')} >
                 <Text>{this.props.deck.title}</Text>
                 <Text>{this.questionsToString(this.props.deck.questions)}</Text>
             </TouchableOpacity>
