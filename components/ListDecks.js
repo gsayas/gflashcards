@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import DeckListItem from "./DeckListItem";
 import { connect } from 'react-redux'
 import { getDecks } from '../utils/api'
-import {loadDecks} from "../actions/decksActions";
+import { loadDecks } from "../actions/decksActions";
 
 class ListDecks extends React.Component {
 

@@ -5,17 +5,17 @@ import {StyleSheet,
         KeyboardAvoidingView } from 'react-native';
 import {TouchableOpacity} from 'react-native';
 //import SubmitButton from 'SubmitButton'
-import { insertDeck, getDecks } from '../utils/api'
+import { insertDeck, getDecks, clean } from '../utils/api'
 import {purple, white} from "../utils/colors";
 import {addDeck} from "../actions/decksActions";
 import { connect } from 'react-redux'
 
-function SubmitButton ({ onPress }) {
+function SubmitButton ( {onPress, text} ) {
     return (
         <TouchableOpacity
             style={styles.SubmitBtn}
             onPress={onPress}>
-            <Text style={styles.submitBtnText}>SUBMIT</Text>
+            <Text style={styles.submitBtnText}>{text}</Text>
         </TouchableOpacity>
     )
 }
@@ -28,13 +28,15 @@ class AddDeck extends React.Component {
         this.setState(() => ({title}));
     }
     handleSubmit = () => {
-        const entry = {title: this.state.title};
-        //const key = 'decks';
+        const newDeck = {
+            title: this.state.title,
+            questions: {}
+        };
 
-        this.props.dispatch(addDeck(entry));
+        this.props.dispatch(addDeck(newDeck));
 
-        console.log(entry);
-        insertDeck(entry);
+        console.log(newDeck);
+        insertDeck(newDeck);
 
     }
     handleGet = () => {
@@ -42,6 +44,13 @@ class AddDeck extends React.Component {
         console.log('handleGet');
         const decks = getDecks();
         decks.then(res => console.log(res));
+
+    }
+
+    handleClean = () => {
+
+
+        clean();
 
     }
 
@@ -57,8 +66,9 @@ class AddDeck extends React.Component {
                     placeholder='Deck Title'
                     style={styles.title}
                 />
-                <SubmitButton onPress={this.handleSubmit} />
-                <SubmitButton onPress={this.handleGet} />
+                <SubmitButton onPress={this.handleSubmit} text='SUBMIT' />
+                <SubmitButton onPress={this.handleGet} text='get Decks' />
+                <SubmitButton onPress={this.handleClean} text='clean Decks' />
             </KeyboardAvoidingView>
         );
     }

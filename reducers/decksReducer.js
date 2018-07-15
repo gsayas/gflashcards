@@ -40,10 +40,7 @@ function decks(state = initialDecks, action) {
         case Actions.ADD_DECK:
             return {
                 ...state,
-                decks: {
-                    ...state.decks,
-                    ...action.deck
-                }
+                [action.deck.title]: action.deck
             }
         default :
             return state;
