@@ -33,6 +33,7 @@ class ListDecks extends React.Component {
                 <FlatList
                     data={objToArray(decks)}
                     renderItem={({item}) => <DeckListItem deck={item} navigation={this.props.navigation} />}
+                    keyExtractor={(item, index) => index.toString()} 
                 />:
                 <Text>Start Adding Decks!</Text>}
             </View>
