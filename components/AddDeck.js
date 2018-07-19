@@ -4,18 +4,19 @@ import {StyleSheet,
         TextInput,
         KeyboardAvoidingView } from 'react-native';
 import {TouchableOpacity} from 'react-native';
-//import SubmitButton from 'SubmitButton'
+//import SubmitButton from 'SubmitButton' 
 import { insertDeck, getDecks, clean } from '../utils/api'
 import {purple, white} from "../utils/colors";
+import {commonStyles} from "../utils/commonStyles";
 import {addDeck} from "../actions/decksActions";
 import { connect } from 'react-redux'
 
 function SubmitButton ( {onPress, text} ) {
     return (
         <TouchableOpacity
-            style={styles.SubmitBtn}
+            style={commonStyles.SubmitBtn}
             onPress={onPress}>
-            <Text style={styles.submitBtnText}>{text}</Text>
+            <Text style={commonStyles.submitBtnText}>{text}</Text>
         </TouchableOpacity>
     )
 }

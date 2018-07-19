@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation'
 import { purple, white } from './utils/colors'
 import AddDeck from "./components/AddDeck";
+import AddCard from "./components/AddCard";
 import ListDecks from "./components/ListDecks";
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -54,6 +55,16 @@ const DeckNavigator = createStackNavigator({
     DeckDetail: {
         screen: DeckDetail,
         navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: purple,
+            }
+        }
+    },
+    AddCard: {
+        screen: AddCard,
+        navigationOptions: {
+            title: 'Add Card',
             headerTintColor: white,
             headerStyle: {
                 backgroundColor: purple,
