@@ -39,7 +39,6 @@ class AddDeck extends React.Component {
 
         console.log(newDeck);
         insertDeck(newDeck);
-
     }
     handleGet = () => {
 
@@ -75,7 +74,7 @@ class AddDeck extends React.Component {
 
 export default connect()(AddDeck)
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     title: {
         width: 200,
         height: 44,

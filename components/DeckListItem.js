@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { white } from '../utils/colors.js'
+import {questionsToString} from "../utils/helpers";
 
 export default class DeckListItem extends React.Component {
 
-    questionsToString = (questions) => {
-        return questions.length + (questions.length !== 1 ? ' Cards':' Card');
-    }
+    
 
     render() {
         return (
@@ -18,7 +17,7 @@ export default class DeckListItem extends React.Component {
                 )} 
             >
                 <Text>{this.props.deck.title}</Text>
-                <Text>{this.questionsToString(this.props.deck.questions)}</Text>
+                <Text>{questionsToString(this.props.deck.questions)}</Text>
             </TouchableOpacity>
         );
     }
