@@ -33,7 +33,6 @@ const initialDecks = {};
 function decks(state = initialDecks, action) {
     switch  (action.type) {
         case Actions.LOAD_DECKS:
-            console.log(action.decks)
             return {
                 ...state,
                 ...action.decks
@@ -43,9 +42,25 @@ function decks(state = initialDecks, action) {
                 ...state,
                 [action.deck.title]: action.deck
             }
+        case Actions.ADD_CARD:        
+            console.log(action)
+            return {
+                ...state,
+                [action.deckTitle]: {
+                    ...state[action.deckTitle],
+                    questions: updateCardsOnDeck(state[action.deckTitle].questions, action.card)
+                }
+            }    
         default :
             return state;
     }
+}
+
+function updateCardsOnDeck(currentCards, newCard) {
+
+    let updatedCards = [...currentCards, newCard]
+
+    return updatedCards;
 }
 
 export default decks;

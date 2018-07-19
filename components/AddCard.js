@@ -5,8 +5,10 @@ import { View,
 		 TextInput,
 		 StyleSheet } from 'react-native'
 import { addCardToDeck, getDecks, clean } from '../utils/api'
-import {SubmitButton} from "../components/SubmitButton";
-import {commonStyles} from "../utils/commonStyles";
+import { addCard } from "../actions/decksActions";
+import { connect } from 'react-redux'
+import { SubmitButton } from "../components/SubmitButton";
+import { commonStyles } from "../utils/commonStyles";
 
 class AddCard extends Component {
 	state = {
@@ -23,7 +25,7 @@ class AddCard extends Component {
         };
         const deckTitle = this.props.navigation.state.params.deckTitle;
 
-        //this.props.dispatch(addDeck(newDeck));
+        this.props.dispatch(addCard(deckTitle, newCard));
 
         console.log(newCard);
         console.log(deckTitle);
@@ -66,7 +68,7 @@ class AddCard extends Component {
     }
 }
 
-export default AddCard
+export default connect()(AddCard);
 
 const styles = StyleSheet.create({
     input: {

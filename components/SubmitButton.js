@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 import { purple, white } from '../utils/colors'
 
-export function SubmitButton ({ onPress }) {
+export function SubmitButton ({ onPress, text }) {
     return (
         <TouchableOpacity
             style={styles.SubmitBtn}
             onPress={onPress}>
-            <Text style={styles.submitBtnText}>SUBMIT</Text>
+            <Text style={styles.submitBtnText}>{text}</Text>
         </TouchableOpacity>
     )
 }
