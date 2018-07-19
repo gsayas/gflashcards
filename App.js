@@ -54,22 +54,23 @@ const DeckNavigator = createStackNavigator({
     },
     DeckDetail: {
         screen: DeckDetail,
-        navigationOptions: {
+        navigationOptions: ({ navigation }) => ({
+          title: `${navigation.state.params.deckTitle}`,
             headerTintColor: white,
             headerStyle: {
                 backgroundColor: purple,
             }
-        }
+        }),
     },
     AddCard: {
         screen: AddCard,
-        navigationOptions: {
-            title: 'Add Card',
+        navigationOptions: ({ navigation }) => ({
+          title: 'Add Card',
             headerTintColor: white,
             headerStyle: {
                 backgroundColor: purple,
             }
-        }
+        }),
     }
 })
 
