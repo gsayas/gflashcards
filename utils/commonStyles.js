@@ -2,6 +2,12 @@ import {StyleSheet} from 'react-native';
 import {purple, white} from "../utils/colors";
 
 export const commonStyles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     SubmitBtn: {
         backgroundColor: purple,
         padding: 10,

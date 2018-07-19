@@ -1,7 +1,8 @@
+import React, { Component } from 'react'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 import { purple, white } from '../utils/colors'
 
-function SubmitButton ({ onPress }) {
+export function SubmitButton ({ onPress }) {
     return (
         <TouchableOpacity
             style={styles.SubmitBtn}
@@ -18,8 +19,7 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         paddingRight: 30,
         height: 45,
-        borderRadius: 2,
-        alignSelf: 'flex-end',
+        borderRadius: 2,        
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -29,4 +29,3 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     }
 })
-export default SubmitButton;

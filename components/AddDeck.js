@@ -10,8 +10,9 @@ import {purple, white} from "../utils/colors";
 import {commonStyles} from "../utils/commonStyles";
 import {addDeck} from "../actions/decksActions";
 import { connect } from 'react-redux'
+import {SubmitButton} from "../components/SubmitButton";
 
-function SubmitButton ( {onPress, text} ) {
+/*export function SubmitButton ( {onPress, text} ) {
     return (
         <TouchableOpacity
             style={commonStyles.SubmitBtn}
@@ -19,7 +20,7 @@ function SubmitButton ( {onPress, text} ) {
             <Text style={commonStyles.submitBtnText}>{text}</Text>
         </TouchableOpacity>
     )
-}
+}*/
 
 class AddDeck extends React.Component {
     state = {
@@ -49,17 +50,14 @@ class AddDeck extends React.Component {
     }
 
     handleClean = () => {
-
-
         clean();
-
     }
 
     render() {
         const {title} = this.state;
 
         return (
-            <KeyboardAvoidingView behavior='padding' style={styles.container}>
+            <KeyboardAvoidingView behavior='padding' style={commonStyles.container}>
                 <Text>What is the title of your new deck?</Text>
                 <TextInput
                     value={title}
@@ -77,13 +75,7 @@ class AddDeck extends React.Component {
 
 export default connect()(AddDeck)
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+export const styles = StyleSheet.create({
     title: {
         width: 200,
         height: 44,
@@ -91,23 +83,5 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#757575',
         margin: 50,
-
-    },
-
-    SubmitBtn: {
-        backgroundColor: purple,
-        padding: 10,
-        paddingLeft: 30,
-        paddingRight: 30,
-        height: 45,
-        borderRadius: 2,
-        alignSelf: 'flex-end',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    submitBtnText: {
-        color: white,
-        fontSize: 22,
-        textAlign: 'center',
     }
 });

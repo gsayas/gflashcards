@@ -64,13 +64,13 @@ const DeckNavigator = createStackNavigator({
     },
     AddCard: {
         screen: AddCard,
-        navigationOptions: ({ navigation }) => ({
+        navigationOptions: {
           title: 'Add Card',
             headerTintColor: white,
             headerStyle: {
                 backgroundColor: purple,
             }
-        }),
+        },
     }
 })
 
