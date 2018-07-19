@@ -4,7 +4,7 @@ import { View,
 		 KeyboardAvoidingView,
 		 TextInput,
 		 StyleSheet } from 'react-native'
-import { insertDeck, getDecks, clean } from '../utils/api'
+import { addCardToDeck, getDecks, clean } from '../utils/api'
 import {SubmitButton} from "../components/SubmitButton";
 import {commonStyles} from "../utils/commonStyles";
 
@@ -21,11 +21,13 @@ class AddCard extends Component {
             question: this.state.question,
             answer: this.state.answer
         };
+        const deckTitle = this.props.navigation.state.params.deckTitle;
 
         //this.props.dispatch(addDeck(newDeck));
 
         console.log(newCard);
-        //insertDeck(newDeck);
+        console.log(deckTitle);
+        addCardToDeck(deckTitle, newCard);
 
     }
     handleGet = () => {

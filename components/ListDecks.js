@@ -13,7 +13,7 @@ class ListDecks extends React.Component {
 
         getDecks()
             .then((persistedDecks) => dispatch(loadDecks(persistedDecks)));
-            /*.then(({ entries }) => { 
+            /*.then(({ entries }) => {   
                 if (!entries[timeToString()]) {
                     dispatch(addEntry({
                         [timeToString()]: getDailyReminderValue()
