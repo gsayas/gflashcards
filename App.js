@@ -4,6 +4,7 @@ import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navig
 import { purple, white } from './utils/colors'
 import AddDeck from "./components/AddDeck";
 import AddCard from "./components/AddCard";
+import Quiz from "./components/Quiz";
 import ListDecks from "./components/ListDecks";
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -66,6 +67,16 @@ const DeckNavigator = createStackNavigator({
         screen: AddCard,
         navigationOptions: {
           title: 'Add Card',
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: purple,
+            }
+        },
+    },
+    Quiz: {
+        screen: Quiz,
+        navigationOptions: {
+          title: 'Quiz',
             headerTintColor: white,
             headerStyle: {
                 backgroundColor: purple,

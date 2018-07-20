@@ -12,16 +12,6 @@ import {addDeck} from "../actions/decksActions";
 import { connect } from 'react-redux'
 import {SubmitButton} from "../components/SubmitButton";
 
-/*export function SubmitButton ( {onPress, text} ) {
-    return (
-        <TouchableOpacity
-            style={commonStyles.SubmitBtn}
-            onPress={onPress}>
-            <Text style={commonStyles.submitBtnText}>{text}</Text>
-        </TouchableOpacity>
-    )
-}*/
-
 class AddDeck extends React.Component {
     state = {
         title: '',

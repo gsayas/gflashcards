@@ -30,8 +30,18 @@ class DeckDetail extends Component {
                             { deckTitle: deckTitle }
                     )} 
                 >
-	                <Text style={commonStyles.submitBtnText}>Add Card!</Text>
+	                <Text style={commonStyles.submitBtnText}>Add Card</Text>
 	            </TouchableOpacity>
+                <TouchableOpacity
+                    style={commonStyles.SubmitBtn}
+                    onPress={
+                        () => this.props.navigation.navigate(
+                            'Quiz',
+                            { deck: deck }
+                    )} 
+                >
+                    <Text style={commonStyles.submitBtnText}>Start Quiz</Text>
+                </TouchableOpacity>
             </View>
         )
     }

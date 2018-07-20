@@ -1,33 +1,5 @@
 import * as Actions from "../actions/types.js";
 
-/*const initialDecks = {
-    decks: {
-        React: {
-            key: 'React',
-            title: 'React',
-            questions: [
-                {
-                    question: 'What is React?',
-                    answer: 'A library for managing user interfaces'
-                },
-                {
-                    question: 'Where do you make Ajax requests in React?',
-                    answer: 'The componentDidMount lifecycle event'
-                }
-            ]
-        },
-        JavaScript: {
-            key: 'JavasScript',
-            title: 'JavaScript',
-            questions: [
-                {
-                    question: 'What is a closure?',
-                    answer: 'The combination of a function and the lexical environment within which that function was declared.'
-                }
-            ]
-        }
-    }
-};*/
 const initialDecks = {};
 
 function decks(state = initialDecks, action) {
@@ -48,19 +20,12 @@ function decks(state = initialDecks, action) {
                 ...state,
                 [action.deckTitle]: {
                     ...state[action.deckTitle],
-                    questions: updateCardsOnDeck(state[action.deckTitle].questions, action.card)
+                    questions: [...state[action.deckTitle].questions, action.card]
                 }
             }    
         default :
             return state;
     }
-}
-
-function updateCardsOnDeck(currentCards, newCard) {
-
-    let updatedCards = [...currentCards, newCard]
-
-    return updatedCards;
 }
 
 export default decks;
