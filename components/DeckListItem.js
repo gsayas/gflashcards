@@ -5,8 +5,6 @@ import {questionsToString} from "../utils/helpers";
 
 export default class DeckListItem extends React.Component {
 
-    
-
     render() {
         return (
             <TouchableOpacity 

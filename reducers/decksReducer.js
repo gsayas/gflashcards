@@ -14,8 +14,7 @@ function decks(state = initialDecks, action) {
                 ...state,
                 [action.deck.title]: action.deck
             }
-        case Actions.ADD_CARD:        
-            console.log(action)
+        case Actions.ADD_CARD:
             return {
                 ...state,
                 [action.deckTitle]: {

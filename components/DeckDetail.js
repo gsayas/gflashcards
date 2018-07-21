@@ -4,15 +4,7 @@ import {commonStyles} from "../utils/commonStyles";
 import {objToArray, questionsToString} from "../utils/helpers";
 import { connect } from 'react-redux'
 
-class DeckDetail extends Component {
-    componentDidMount(){        
-        const {decks} = this.props;
-        const deckTitle = this.props.navigation.state.params.deckTitle;
-
-        /*if (this.props.posts === undefined || !this.props.posts.find(item => item.id === postId)) {
-          this.props.dispatch(fetchPost(postId));
-        }*/ 
-    }
+class DeckDetail extends Component {    
     render() {
         const {decks} = this.props;        
         const deckTitle = this.props.navigation.state.params.deckTitle;        

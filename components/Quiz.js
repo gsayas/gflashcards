@@ -15,13 +15,11 @@ export default class Quiz extends React.Component {
     handleSubmitAnswer = (answer) => {
 
         if(answer){
-            console.log('Correct!!!')
             this.setState({
                 currentQuestion: this.state.currentQuestion+1,
                 correctAnswers: this.state.correctAnswers+1,                
             })
         }else{
-            console.log('Incorrect!!')
             this.setState({
                 currentQuestion: this.state.currentQuestion+1,               
             })

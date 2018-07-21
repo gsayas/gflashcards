@@ -9,7 +9,6 @@ class ListDecks extends React.Component {
 
     componentDidMount () {
         const { dispatch } = this.props
-        console.log('mounting')
 
         getDecks()
             .then((persistedDecks) => dispatch(loadDecks(persistedDecks)));
@@ -18,7 +17,6 @@ class ListDecks extends React.Component {
 
     render() {
         const {decks} = this.props;
-        console.log(this.props);
 
         return (
             <View style={styles.container}>

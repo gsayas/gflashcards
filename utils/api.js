@@ -28,7 +28,6 @@ export function addCardToDeck ( deckTitle, card ) {
 }
 
 export function getResults(results){
-    console.log(results)
     return JSON.parse(results);
 }
 

@@ -9,6 +9,7 @@ import { addCard } from "../actions/decksActions";
 import { connect } from 'react-redux'
 import { SubmitButton } from "../components/SubmitButton";
 import { commonStyles } from "../utils/commonStyles";
+import { NavigationActions } from 'react-navigation'
 
 class AddCard extends Component {
 	state = {
@@ -26,18 +27,16 @@ class AddCard extends Component {
         const deckTitle = this.props.navigation.state.params.deckTitle;
 
         this.props.dispatch(addCard(deckTitle, newCard));
-
-        console.log(newCard);
-        console.log(deckTitle);
+        this.toHome();
         addCardToDeck(deckTitle, newCard);
-
+    }
+    toHome = () => {
+        console.log(this.props.navigation)
+        this.props.navigation.dispatch(NavigationActions.back({routeName: 'DeckDetail'}))
     }
     handleGet = () => {
-
-        console.log('handleGet');
         const decks = getDecks();
         decks.then(res => console.log(res));
-
     }
 
     handleClean = () => {

@@ -4,13 +4,13 @@ import {StyleSheet,
         TextInput,
         KeyboardAvoidingView } from 'react-native';
 import {TouchableOpacity} from 'react-native';
-//import SubmitButton from 'SubmitButton' 
 import { insertDeck, getDecks, clean } from '../utils/api'
 import {purple, white} from "../utils/colors";
 import {commonStyles} from "../utils/commonStyles";
 import {addDeck} from "../actions/decksActions";
 import { connect } from 'react-redux'
 import {SubmitButton} from "../components/SubmitButton";
+import { NavigationActions } from 'react-navigation'
 
 class AddDeck extends React.Component {
     state = {
@@ -26,16 +26,16 @@ class AddDeck extends React.Component {
         };
 
         this.props.dispatch(addDeck(newDeck));
-
-        console.log(newDeck);
+        this.toHome();     
         insertDeck(newDeck);
     }
+    toHome = () => {
+        console.log(this.props.navigation)
+        this.props.navigation.dispatch(NavigationActions.navigate({routeName: 'ListDecks'}))
+    }
     handleGet = () => {
-
-        console.log('handleGet');
         const decks = getDecks();
         decks.then(res => console.log(res));
-
     }
 
     handleClean = () => {
