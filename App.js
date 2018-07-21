@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation'
 import { purple, white } from './utils/colors'
 import AddDeck from "./components/AddDeck";
@@ -10,6 +10,15 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import decksReducer from './reducers/decksReducer';
 import DeckDetail from "./components/DeckDetail";
+import { Constants } from 'expo'
+
+function CustomStatusBar ({backgroundColor, ...props}) {
+  return (
+    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
+      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
+    </View>
+  )
+}
 
 const Tabs = createMaterialTopTabNavigator({
     ListDecks: {
@@ -90,6 +99,7 @@ export default class App extends React.Component {
     return (
         <Provider store={createStore(decksReducer)}>
             <View style={{flex: 1}}>
+                <CustomStatusBar backgroundColor={purple} barStyle="light-content" />
                 <DeckNavigator />
             </View>
         </Provider>

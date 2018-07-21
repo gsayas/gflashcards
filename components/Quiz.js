@@ -36,8 +36,8 @@ export default class Quiz extends React.Component {
         const deck = this.props.navigation.state.params.deck;
         const {currentQuestion, showAnswer} = this.state;
         const totalQuestions = deck.questions.length;
-        const currentQuestionText = '';
-        const currentAnswerText = '';
+        let currentQuestionText = '';
+        let currentAnswerText = '';
 
         if(currentQuestion<totalQuestions){
             currentQuestionText = deck.questions[currentQuestion].question;    
