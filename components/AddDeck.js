@@ -46,7 +46,7 @@ class AddDeck extends React.Component {
         const {title} = this.state;
 
         return (
-            <KeyboardAvoidingView behavior='padding' style={commonStyles.container}>
+            <KeyboardAvoidingView behavior='padding' style={styles.container}>
                 <Text>What is the title of your new deck?</Text>
                 <TextInput
                     value={title}
@@ -72,5 +72,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#757575',
         margin: 50,
+    },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 });

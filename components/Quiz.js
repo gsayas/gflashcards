@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { red, green, white } from '../utils/colors.js';
-import {SubmitButton} from "../components/SubmitButton";
-import {commonStyles} from "../utils/commonStyles";
+//import {SubmitButton} from "../components/SubmitButton";
+//import {commonStyles} from "../utils/commonStyles";
 
 export default class Quiz extends React.Component {
 
@@ -45,19 +45,23 @@ export default class Quiz extends React.Component {
         return (            
             <View> 
             {currentQuestion<totalQuestions?
-                <View> 
+                <View styles={styles.container}> 
                     <Text>{currentQuestion + 1}/{totalQuestions}</Text>               
                     <Text>{deck.title}</Text>
-                    <Text>{!showAnswer?currentQuestionText:currentAnswerText}</Text>                    
-                    <SubmitButton onPress={this.toggleShowAnswer} text={showAnswer?'Question':'Answer'} />
+                    <Text>{!showAnswer?currentQuestionText:currentAnswerText}</Text>   
+                    <TouchableOpacity
+                        style={styles.AnswerBtn}
+                        onPress={this.toggleShowAnswer}>
+                        <Text style={styles.submitBtnText}>{showAnswer?'Question':'Answer'}</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity 
-                        style={styles.AnswerBtn, styles.CorrectAnswerBtn} 
+                        style={[styles.AnswerBtn, styles.CorrectAnswerBtn]} 
                         onPress={() => this.handleSubmitAnswer(true)} 
                     >
                         <Text style={styles.AnswerBtnText} >Correct</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                        style={styles.AnswerBtn, styles.IncorrectAnswerBtn} 
+                        style={[styles.AnswerBtn, styles.IncorrectAnswerBtn]} 
                         onPress={() => this.handleSubmitAnswer(false)} 
                     >
                         <Text style={styles.AnswerBtnText} >Incorrect</Text>
@@ -75,15 +79,21 @@ export default class Quiz extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center'
+    },
     AnswerBtn: {
         backgroundColor: red,
-        padding: 10,
+        padding: 40,
         paddingLeft: 30,
         paddingRight: 30,
         height: 45,
         borderRadius: 2,        
         justifyContent: 'center',
         alignItems: 'center',
+        width: 300
     },
     CorrectAnswerBtn: {
         backgroundColor: green

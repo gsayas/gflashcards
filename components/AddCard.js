@@ -8,7 +8,6 @@ import { addCardToDeck, getDecks, clean } from '../utils/api'
 import { addCard } from "../actions/decksActions";
 import { connect } from 'react-redux'
 import { SubmitButton } from "../components/SubmitButton";
-import { commonStyles } from "../utils/commonStyles";
 import { NavigationActions } from 'react-navigation'
 
 class AddCard extends Component {
@@ -46,7 +45,7 @@ class AddCard extends Component {
         const {question, answer} = this.state;
 
         return (
-            <KeyboardAvoidingView behavior='padding' style={commonStyles.container}>                
+            <KeyboardAvoidingView behavior='padding' style={styles.container}>                
                 <TextInput
                     value={question}
                     onChangeText={(value)=>this.handleFormChange({question: value})}
@@ -69,7 +68,13 @@ class AddCard extends Component {
 
 export default connect()(AddCard);
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({    
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     input: {
         width: 300,
         height: 44,

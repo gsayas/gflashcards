@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StatusBar } from 'react-native';
 import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation'
-import { purple, white } from './utils/colors'
+import { purple, white, green } from './utils/colors'
 import AddDeck from "./components/AddDeck";
 import AddCard from "./components/AddCard";
 import Quiz from "./components/Quiz";
@@ -10,7 +10,8 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import decksReducer from './reducers/decksReducer';
 import DeckDetail from "./components/DeckDetail";
-import { Constants } from 'expo'
+import { Constants } from 'expo';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 function CustomStatusBar ({backgroundColor, ...props}) {
   return (
@@ -25,14 +26,14 @@ const Tabs = createMaterialTopTabNavigator({
         screen: ListDecks,
         navigationOptions: {
             tabBarLabel: 'DECKS',
-            tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
+            tabBarIcon: ({ tintColor }) => <FontAwesome name='th-list' size={25} color={tintColor} />
         },
     },
     AddDeck: {
         screen: AddDeck,
         navigationOptions: {
             tabBarLabel: 'NEW DECK',
-            tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
+            tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={25} color={tintColor} />
         },
     },
 }, {
@@ -41,8 +42,13 @@ const Tabs = createMaterialTopTabNavigator({
     },
     tabBarOptions: {
         activeTintColor: white,
+        showIcon: true,
+        labelStyle: {
+            fontSize: 12,
+            marginTop: 3
+        },
         style: {
-            height: 56,
+            height: 63,
             backgroundColor: purple,
             shadowColor: 'rgba(0, 0, 0, 0.24)',
             shadowOffset: {
@@ -51,7 +57,10 @@ const Tabs = createMaterialTopTabNavigator({
             },
             shadowRadius: 6,
             shadowOpacity: 1
-        }
+        }, 
+        indicatorStyle: {
+            backgroundColor: 'red',
+        },
     }
 })
 
@@ -79,6 +88,8 @@ const DeckNavigator = createStackNavigator({
             headerTintColor: white,
             headerStyle: {
                 backgroundColor: purple,
+                marginTop: 0,
+                paddingTop: 0
             }
         },
     },
