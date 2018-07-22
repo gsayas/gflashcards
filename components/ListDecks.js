@@ -26,7 +26,7 @@ class ListDecks extends React.Component {
                     renderItem={({item}) => <DeckListItem deck={item} navigation={this.props.navigation} />}
                     keyExtractor={(item, index) => index.toString()} 
                 />:
-                <Text>Start Adding Decks!</Text>}
+                <Text style={styles.intro}>Start Adding Decks!</Text>}
             </View>
         );
     }
@@ -42,6 +42,10 @@ const styles = StyleSheet.create({
         paddingRight:20,
         paddingBottom: 10
     },
+    intro: {
+        alignSelf: 'center',
+        fontSize: 22
+    }
 });
 
 const objToArray = (obj) => {
