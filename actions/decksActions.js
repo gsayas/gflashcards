@@ -8,8 +8,7 @@ export function addDeck (deck) {
     }
 }
 
-export function loadDecks (decks) {
-    console.log(decks)
+export function loadDecks (decks) {    
     return {
         type: LOAD_DECKS,
         decks

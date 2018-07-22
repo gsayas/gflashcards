@@ -35,7 +35,7 @@ class AddDeck extends React.Component {
     }
     handleGet = () => {
         const decks = getDecks();
-        decks.then(res => console.info(res));
+       // decks.then(res => console.info(res));
     }
 
     handleClean = () => {

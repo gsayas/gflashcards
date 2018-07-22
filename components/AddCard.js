@@ -30,12 +30,12 @@ class AddCard extends Component {
         addCardToDeck(deckTitle, newCard);
     }
     toHome = () => {
-        console.log(this.props.navigation)
+        //console.log(this.props.navigation)
         this.props.navigation.dispatch(NavigationActions.back({routeName: 'DeckDetail'}))
     }
     handleGet = () => {
         const decks = getDecks();
-        decks.then(res => console.log(res));
+        //decks.then(res => console.log(res));
     }
 
     handleClean = () => {

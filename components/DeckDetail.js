@@ -3,13 +3,22 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import {objToArray, questionsToString} from "../utils/helpers";
 import { connect } from 'react-redux'
 import {purple, white, black, gray} from "../utils/colors";
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
-class DeckDetail extends Component {    
+class DeckDetail extends Component {
+    
+    handleStartQuiz = (deck) => {
+        this.props.navigation.navigate('Quiz', { deck: deck });
+
+        clearLocalNotification()
+            .then(setLocalNotification);
+    }
+
     render() {
         const {decks} = this.props;        
         const deckTitle = this.props.navigation.state.params.deckTitle;        
         const deck = decks ? objToArray(decks).find(item => item.title === deckTitle) : false;
-        const emptyQuiz = deck.questions.lenght == 0;
+        const emptyQuiz = deck.questions.length == 0;
 
         return (
             <View style={styles.container} >
@@ -30,17 +39,14 @@ class DeckDetail extends Component {
                 <TouchableOpacity
                     style={[styles.CommonBtn, ( !emptyQuiz ? styles.StartQuizBtn : styles.StartQuizBtnDisabled) ]}
                     disabled={emptyQuiz}
-                    onPress={
-                        () => this.props.navigation.navigate(
-                            'Quiz',
-                            { deck: deck }
-                    )} 
+                    onPress={()=>this.handleStartQuiz(deck)} 
                 >
                     <Text style={styles.BtnText}>Start Quiz</Text>
                 </TouchableOpacity>
             </View>
         )
     }
+
 }
 
 function mapStateToProps (decks) {

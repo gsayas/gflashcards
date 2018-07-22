@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { red, green, white, purple, black } from '../utils/colors.js';
-import { NavigationActions } from 'react-navigation'
+import { NavigationActions } from 'react-navigation';
+
 
 export default class Quiz extends React.Component {
 
@@ -34,9 +35,7 @@ export default class Quiz extends React.Component {
             currentQuestion: 0,
             correctAnswers: 0,
             showAnswer: false
-        })
-        /*this.props.navigation.dispatch(NavigationActions.navigate(
-            { routeName: 'Quiz', params: { deck: deck }}))*/
+        })        
     }
 
     handleBackToDeck = (deckTitle) => {

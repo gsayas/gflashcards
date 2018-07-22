@@ -12,6 +12,7 @@ import decksReducer from './reducers/decksReducer';
 import DeckDetail from "./components/DeckDetail";
 import { Constants } from 'expo';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import { setLocalNotification } from './utils/helpers'
 
 function CustomStatusBar ({backgroundColor, ...props}) {
   return (
@@ -106,6 +107,9 @@ const DeckNavigator = createStackNavigator({
 })
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
   render() {
     return (
         <Provider store={createStore(decksReducer)}>
