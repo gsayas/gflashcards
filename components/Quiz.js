@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { red, green, white } from '../utils/colors.js';
-//import {SubmitButton} from "../components/SubmitButton";
-//import {commonStyles} from "../utils/commonStyles";
+import { red, green, white, purple } from '../utils/colors.js';
 
 export default class Quiz extends React.Component {
 
@@ -16,12 +14,12 @@ export default class Quiz extends React.Component {
 
         if(answer){
             this.setState({
-                currentQuestion: this.state.currentQuestion+1,
-                correctAnswers: this.state.correctAnswers+1,                
+                currentQuestion: this.state.currentQuestion + 1,
+                correctAnswers: this.state.correctAnswers + 1,                
             })
         }else{
             this.setState({
-                currentQuestion: this.state.currentQuestion+1,               
+                currentQuestion: this.state.currentQuestion + 1,               
             })
         }
     }
@@ -37,35 +35,37 @@ export default class Quiz extends React.Component {
         let currentQuestionText = '';
         let currentAnswerText = '';
 
-        if(currentQuestion<totalQuestions){
+        if(currentQuestion < totalQuestions){
             currentQuestionText = deck.questions[currentQuestion].question;    
             currentAnswerText = deck.questions[currentQuestion].answer;
         }
 
         return (            
-            <View> 
+            <View style={styles.container}> 
             {currentQuestion<totalQuestions?
-                <View styles={styles.container}> 
-                    <Text>{currentQuestion + 1}/{totalQuestions}</Text>               
-                    <Text>{deck.title}</Text>
-                    <Text>{!showAnswer?currentQuestionText:currentAnswerText}</Text>   
-                    <TouchableOpacity
-                        style={styles.AnswerBtn}
-                        onPress={this.toggleShowAnswer}>
-                        <Text style={styles.submitBtnText}>{showAnswer?'Question':'Answer'}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        style={[styles.AnswerBtn, styles.CorrectAnswerBtn]} 
-                        onPress={() => this.handleSubmitAnswer(true)} 
-                    >
-                        <Text style={styles.AnswerBtnText} >Correct</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        style={[styles.AnswerBtn, styles.IncorrectAnswerBtn]} 
-                        onPress={() => this.handleSubmitAnswer(false)} 
-                    >
-                        <Text style={styles.AnswerBtnText} >Incorrect</Text>
-                    </TouchableOpacity>
+                <View style={styles.container}>                    
+                    <Text style={styles.totalQuestionsText}>{currentQuestion + 1}/{totalQuestions}</Text>
+                    <View style={styles.questionContainer}>               
+                        <Text style={styles.questionText}>{!showAnswer?currentQuestionText:currentAnswerText}</Text>                    
+                        <TouchableOpacity
+                            onPress={this.toggleShowAnswer}>
+                            <Text style={styles.FlipBtnText}>{showAnswer ? 'Question':'Answer' }</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                        <TouchableOpacity 
+                            style={[styles.AnswerBtn, styles.CorrectAnswerBtn]} 
+                            onPress={() => this.handleSubmitAnswer(true)} 
+                        >
+                            <Text style={styles.AnswerBtnText} >Correct</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={[styles.AnswerBtn, styles.IncorrectAnswerBtn]} 
+                            onPress={() => this.handleSubmitAnswer(false)} 
+                        >
+                            <Text style={styles.AnswerBtnText} >Incorrect</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>            
             :            
                 <View>
@@ -82,7 +82,20 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center'
+        alignItems: 'center',        
+        justifyContent: 'space-between'
+    },
+    totalQuestionsText: {
+        fontSize: 18,
+        marginTop: 10,
+        alignSelf: 'flex-start',   
+    },
+    questionContainer: {
+        alignItems: 'center',
+    },
+    questionText: {  
+        fontSize: 30,
+        marginBottom: 20
     },
     AnswerBtn: {
         backgroundColor: red,
@@ -93,17 +106,27 @@ const styles = StyleSheet.create({
         borderRadius: 2,        
         justifyContent: 'center',
         alignItems: 'center',
-        width: 300
+        width: 300,
+        marginBottom: 20
     },
+    /*FlipBtn: {       
+        justifyContent: 'center',
+        alignItems: 'center',
+    },*/
     CorrectAnswerBtn: {
-        backgroundColor: green
+        backgroundColor: green,
     },
     IncorrectAnswerBtn: {
-        backgroundColor: red
+        backgroundColor: red,
     },
     AnswerBtnText: {
         color: white,
         fontSize: 22,
+        textAlign: 'center',
+    },
+    FlipBtnText: {
+        color: red,
+        fontSize: 16,
         textAlign: 'center',
     }
 })

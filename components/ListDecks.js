@@ -11,8 +11,7 @@ class ListDecks extends React.Component {
         const { dispatch } = this.props
 
         getDecks()
-            .then((persistedDecks) => dispatch(loadDecks(persistedDecks)));
-            
+            .then((persistedDecks) => dispatch(loadDecks(persistedDecks)));            
     }
 
     render() {
