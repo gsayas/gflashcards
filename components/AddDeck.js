@@ -25,17 +25,18 @@ class AddDeck extends React.Component {
             questions: []
         };
 
-        this.props.dispatch(addDeck(newDeck));
-        this.toHome();     
-        insertDeck(newDeck);
+        this.props.dispatch(addDeck(newDeck));  
+        insertDeck(newDeck);        
+        this.toDeckDetail(this.state.title);   
     }
-    toHome = () => {
+    toDeckDetail = (deckTitle) => {
         console.log(this.props.navigation)
-        this.props.navigation.dispatch(NavigationActions.navigate({routeName: 'ListDecks'}))
+        this.props.navigation.dispatch(NavigationActions.navigate(
+            { routeName: 'DeckDetail', params: { deckTitle: deckTitle }}))
     }
     handleGet = () => {
         const decks = getDecks();
-        decks.then(res => console.log(res));
+        decks.then(res => console.info(res));
     }
 
     handleClean = () => {
@@ -54,7 +55,7 @@ class AddDeck extends React.Component {
                     placeholder='Deck Title'
                     style={styles.title}
                 />
-                <SubmitButton onPress={this.handleSubmit} text='SUBMIT' />
+                <SubmitButton onPress={this.handleSubmit} text='Create Deck' />
                 <SubmitButton onPress={this.handleGet} text='get Decks' />
                 <SubmitButton onPress={this.handleClean} text='clean Decks' />
             </KeyboardAvoidingView>
