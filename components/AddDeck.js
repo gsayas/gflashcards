@@ -49,7 +49,7 @@ class AddDeck extends React.Component {
                     style={styles.SubmitBtn}
                     onPress={this.handleSubmit}>
                     <Text style={styles.submitBtnText}>Create Deck</Text>
-                </TouchableOpacity>                
+                </TouchableOpacity>               
             </KeyboardAvoidingView>
         );
     }
