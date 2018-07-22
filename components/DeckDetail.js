@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import {objToArray, questionsToString} from "../utils/helpers";
 import { connect } from 'react-redux'
-import {purple, white, black} from "../utils/colors";
+import {purple, white, black, gray} from "../utils/colors";
 
 class DeckDetail extends Component {    
     render() {
@@ -27,7 +27,8 @@ class DeckDetail extends Component {
 	                <Text style={styles.BtnText}>Add Card</Text>
 	            </TouchableOpacity>
                 <TouchableOpacity
-                    style={[styles.CommonBtn, styles.StartQuizBtn]}
+                    style={[styles.CommonBtn, (false?styles.StartQuizBtn:styles.StartQuizBtnDisabled)]}
+                    disabled={true}
                     onPress={
                         () => this.props.navigation.navigate(
                             'Quiz',
@@ -81,6 +82,9 @@ const styles = StyleSheet.create({
     }, 
     StartQuizBtn: {
         backgroundColor: black
+    },
+    StartQuizBtnDisabled: {
+        backgroundColor: gray
     },   
     BtnText: {
         color: white,

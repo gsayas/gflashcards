@@ -30,7 +30,6 @@ class AddDeck extends React.Component {
         this.toDeckDetail(this.state.title);   
     }
     toDeckDetail = (deckTitle) => {
-        console.log(this.props.navigation)
         this.props.navigation.dispatch(NavigationActions.navigate(
             { routeName: 'DeckDetail', params: { deckTitle: deckTitle }}))
     }

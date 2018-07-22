@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { red, green, white, purple } from '../utils/colors.js';
+import { red, green, white, purple, black } from '../utils/colors.js';
+import { NavigationActions } from 'react-navigation'
 
 export default class Quiz extends React.Component {
 
@@ -26,6 +27,21 @@ export default class Quiz extends React.Component {
 
     toggleShowAnswer = () => {
         this.setState({showAnswer: !this.state.showAnswer})
+    }
+
+    handleRestart = (deck) => {
+        this.setState({
+            currentQuestion: 0,
+            correctAnswers: 0,
+            showAnswer: false
+        })
+        /*this.props.navigation.dispatch(NavigationActions.navigate(
+            { routeName: 'Quiz', params: { deck: deck }}))*/
+    }
+
+    handleBackToDeck = (deckTitle) => {
+        this.props.navigation.dispatch(NavigationActions.navigate(
+            { routeName: 'DeckDetail', params: { deckTitle: deckTitle }}))
     }
 
     render() {
@@ -71,6 +87,20 @@ export default class Quiz extends React.Component {
                 <View style={styles.resultsContainer}>
                     <Text style={styles.resultsDeckTitleText}>You finished the quiz '{deck.title}'</Text>                
                     <Text style={styles.resultsPercentageText}>Correct answers: {this.state.correctAnswers} of {totalQuestions}</Text>
+                    <View style={{marginTop: 60}}>
+                        <TouchableOpacity 
+                            style={[styles.AnswerBtn, {backgroundColor: purple}]} 
+                            onPress={() => this.handleRestart(deck)} 
+                        >
+                            <Text style={styles.AnswerBtnText} >Restart Quiz</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={[styles.AnswerBtn, {backgroundColor: black}]} 
+                            onPress={() => this.handleBackToDeck(deck.title)} 
+                        >
+                            <Text style={styles.AnswerBtnText} >Back to Deck</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>}
             </View>
 
