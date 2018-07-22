@@ -33,15 +33,6 @@ class AddDeck extends React.Component {
         this.props.navigation.dispatch(NavigationActions.navigate(
             { routeName: 'DeckDetail', params: { deckTitle: deckTitle }}))
     }
-    handleGet = () => {
-        const decks = getDecks();
-       // decks.then(res => console.info(res));
-    }
-
-    handleClean = () => {
-        clean();
-    }
-
     render() {
         const {title} = this.state;
 
@@ -55,8 +46,6 @@ class AddDeck extends React.Component {
                     style={styles.title}
                 />
                 <SubmitButton onPress={this.handleSubmit} text='Create Deck' />
-                <SubmitButton onPress={this.handleGet} text='get Decks' />
-                <SubmitButton onPress={this.handleClean} text='clean Decks' />
             </KeyboardAvoidingView>
         );
     }

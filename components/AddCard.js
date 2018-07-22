@@ -30,17 +30,8 @@ class AddCard extends Component {
         addCardToDeck(deckTitle, newCard);
     }
     toHome = () => {
-        //console.log(this.props.navigation)
         this.props.navigation.dispatch(NavigationActions.back({routeName: 'DeckDetail'}))
-    }
-    handleGet = () => {
-        const decks = getDecks();
-        //decks.then(res => console.log(res));
-    }
-
-    handleClean = () => {
-        clean();
-    }
+    }    
     render() {
         const {question, answer} = this.state;
 
@@ -59,8 +50,6 @@ class AddCard extends Component {
                     style={styles.input}
                 />
                 <SubmitButton onPress={this.handleSubmit} text='SUBMIT' />
-                <SubmitButton onPress={this.handleGet} text='get Decks' />
-                <SubmitButton onPress={this.handleClean} text='clean Decks' />
             </KeyboardAvoidingView>
         );
     }

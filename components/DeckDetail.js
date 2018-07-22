@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         backgroundColor: black
     },
     StartQuizBtnDisabled: {
-        backgroundColor: gray
+        opacity: 0
     },   
     BtnText: {
         color: white,
