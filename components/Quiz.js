@@ -68,9 +68,9 @@ export default class Quiz extends React.Component {
                     </View>
                 </View>            
             :            
-                <View>
-                    <Text>{deck.title}</Text>                
-                    <Text>Total of correct answers: {this.state.correctAnswers}</Text>
+                <View style={styles.resultsContainer}>
+                    <Text style={styles.resultsDeckTitleText}>You finished the quiz '{deck.title}'</Text>                
+                    <Text style={styles.resultsPercentageText}>Correct answers: {this.state.correctAnswers} of {totalQuestions}</Text>
                 </View>}
             </View>
 
@@ -128,5 +128,18 @@ const styles = StyleSheet.create({
         color: red,
         fontSize: 16,
         textAlign: 'center',
-    }
+    },    
+    resultsContainer: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',        
+        justifyContent: 'center'
+    },
+    resultsDeckTitleText: {
+        fontSize: 22,
+        marginBottom: 20
+    },
+    resultsPercentageText: {
+        fontSize: 28,
+    },
 })
