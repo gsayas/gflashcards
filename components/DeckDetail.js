@@ -9,6 +9,7 @@ class DeckDetail extends Component {
         const {decks} = this.props;        
         const deckTitle = this.props.navigation.state.params.deckTitle;        
         const deck = decks ? objToArray(decks).find(item => item.title === deckTitle) : false;
+        const emptyQuiz = deck.questions.lenght == 0;
 
         return (
             <View style={styles.container} >
@@ -27,8 +28,8 @@ class DeckDetail extends Component {
 	                <Text style={styles.BtnText}>Add Card</Text>
 	            </TouchableOpacity>
                 <TouchableOpacity
-                    style={[styles.CommonBtn, (false?styles.StartQuizBtn:styles.StartQuizBtnDisabled)]}
-                    disabled={true}
+                    style={[styles.CommonBtn, ( !emptyQuiz ? styles.StartQuizBtn : styles.StartQuizBtnDisabled) ]}
+                    disabled={emptyQuiz}
                     onPress={
                         () => this.props.navigation.navigate(
                             'Quiz',
