@@ -8,9 +8,8 @@ import { insertDeck, getDecks, clean } from '../utils/api'
 import {purple, white} from "../utils/colors";
 import {commonStyles} from "../utils/commonStyles";
 import {addDeck} from "../actions/decksActions";
-import { connect } from 'react-redux'
-import {SubmitButton} from "../components/SubmitButton";
-import { NavigationActions } from 'react-navigation'
+import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 
 class AddDeck extends React.Component {
     state = {
@@ -27,7 +26,8 @@ class AddDeck extends React.Component {
 
         this.props.dispatch(addDeck(newDeck));  
         insertDeck(newDeck);        
-        this.toDeckDetail(this.state.title);   
+        this.toDeckDetail(this.state.title);
+        this.setState({title:''}); 
     }
     toDeckDetail = (deckTitle) => {
         this.props.navigation.dispatch(NavigationActions.navigate(
@@ -37,15 +37,19 @@ class AddDeck extends React.Component {
         const {title} = this.state;
 
         return (
-            <KeyboardAvoidingView behavior='padding' style={styles.container}>
-                <Text>What is the title of your new deck?</Text>
+            <KeyboardAvoidingView behavior='position' style={styles.container}>
+                <Text style={styles.intro}>What is the title of your new deck?</Text>
                 <TextInput
                     value={title}
                     onChangeText={this.handleTitleChange}
                     placeholder='Deck Title'
-                    style={styles.title}
+                    style={styles.input}
                 />
-                <SubmitButton onPress={this.handleSubmit} text='Create Deck' />
+                <TouchableOpacity
+                    style={styles.SubmitBtn}
+                    onPress={this.handleSubmit}>
+                    <Text style={styles.submitBtnText}>Create Deck</Text>
+                </TouchableOpacity>                
             </KeyboardAvoidingView>
         );
     }
@@ -54,18 +58,38 @@ class AddDeck extends React.Component {
 export default connect()(AddDeck)
 
 const styles = StyleSheet.create({
-    title: {
+    input: {
         width: 200,
         height: 44,
         padding: 8,
         borderWidth: 1,
         borderColor: '#757575',
-        margin: 50,
+        margin: 30,
+    },
+    intro: {        
+        fontSize:18,
+        marginTop: 20
     },
     container: {
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    SubmitBtn: {
+        backgroundColor: purple,
+        padding: 10,
+        paddingLeft: 30,
+        paddingRight: 30,
+        height: 45,
+        borderRadius: 2,        
+        justifyContent: 'center',
+        alignSelf: 'center',
+        width:180
+    },
+    submitBtnText: {
+        color: white,
+        fontSize: 22,
+        textAlign: 'center',
     }
 });

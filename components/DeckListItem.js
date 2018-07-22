@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { white } from '../utils/colors.js'
+import { white, purple } from '../utils/colors.js'
 import {questionsToString} from "../utils/helpers";
 
 export default class DeckListItem extends React.Component {
@@ -14,8 +14,8 @@ export default class DeckListItem extends React.Component {
                     { deckTitle: this.props.deck.title }
                 )} 
             >
-                <Text>{this.props.deck.title}</Text>
-                <Text>{questionsToString(this.props.deck.questions)}</Text>
+                <Text style={styles.Text}>{this.props.deck.title}</Text>
+                <Text style={styles.Text}>{questionsToString(this.props.deck.questions)}</Text>
             </TouchableOpacity>
         );
     }
@@ -23,13 +23,13 @@ export default class DeckListItem extends React.Component {
 
 const styles = StyleSheet.create({
     item: {
-        backgroundColor: white,
-        borderRadius: 2,
-        borderBottomWidth: 1,
-        padding: 20,
+        backgroundColor: purple,
+        borderRadius: 6,
+        padding: 15,
         marginLeft: 10,
         marginRight: 10,
         marginTop: 17,
+        alignItems: 'center',
         justifyContent: 'center',
         shadowRadius: 3,
         shadowOpacity: 0.8,
@@ -38,5 +38,9 @@ const styles = StyleSheet.create({
             width: 0,
             height: 3
         },
+    },
+    Text: {
+        color: white,
+        fontSize: 18,
     }
 })

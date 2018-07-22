@@ -21,6 +21,7 @@ class ListDecks extends React.Component {
             <View style={styles.container}>
                 {Object.keys(decks).length?
                 <FlatList
+                    style={{flex: 1}}
                     data={objToArray(decks)}
                     renderItem={({item}) => <DeckListItem deck={item} navigation={this.props.navigation} />}
                     keyExtractor={(item, index) => index.toString()} 
@@ -35,8 +36,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
+        alignItems: 'stretch',
         justifyContent: 'center',
+        paddingLeft:20,
+        paddingRight:20,
+        paddingBottom: 10
     },
 });
 

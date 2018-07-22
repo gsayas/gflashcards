@@ -64,7 +64,7 @@ export default class Quiz extends React.Component {
                         <Text style={styles.questionText}>{!showAnswer?currentQuestionText:currentAnswerText}</Text>                    
                         <TouchableOpacity
                             onPress={this.toggleShowAnswer}>
-                            <Text style={styles.FlipBtnText}>{showAnswer ? 'Question':'Answer' }</Text>
+                            <Text style={styles.FlipBtnText}>{showAnswer ? 'see Question':'see Answer' }</Text>
                         </TouchableOpacity>
                     </View>
                     <View>
